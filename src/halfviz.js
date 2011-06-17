@@ -29,7 +29,6 @@
     var _failures = null
     
     var that = {
-      dashboard:Dashboard("#dashboard", sys),
       io:IO("#editor .io"),
       init:function(){
         
@@ -51,7 +50,6 @@
           // update the system parameters
           if (doc.sys){
             sys.parameters(doc.sys)
-            that.dashboard.update()
           }
 
           // modify the graph in the particle system
