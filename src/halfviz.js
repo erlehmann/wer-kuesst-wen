@@ -70,6 +70,8 @@
 
         $(that.io).bind('get', that.getDoc)
         $(that.io).bind('clear', that.newDoc)
+
+        $(that.io).bind('addNode', that.addNode)
         $(that.io).bind('addEdge', that.addEdge)
         return that
       },
@@ -98,6 +100,14 @@
         that.updateGraph()
         that.resize()
         _editing = false
+      },
+
+      addNode:function(e){
+        // FIXME: use UUID or something
+        sys.addNode(e.names[0], {
+          names: e.names,
+          urls: e.urls
+        })
       },
 
       addEdge:function(e){
