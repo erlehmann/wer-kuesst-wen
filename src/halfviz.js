@@ -48,7 +48,6 @@
     }
 
     var _ed = dom.find('#editor')
-    var _code = dom.find('textarea')
     var _canvas = dom.find('#viewport').get(0)
     var _grabber = dom.find('#grabber')
 
@@ -65,7 +64,6 @@
         that.resize()
         that.updateLayout(Math.max(1, $(window).width()-340))
 
-        _code.keydown(that.typing)
         _grabber.bind('mousedown', that.grabbed)
 
         $(that.io).bind('get', that.getDoc)
@@ -88,7 +86,6 @@
           }
 
           // modify the graph in the particle system
-          _code.val(doc.src)
           that.updateGraph()
           that.resize()
           _editing = false
@@ -142,7 +139,6 @@
       },
 
       updateGraph:function(e){
-        console.log(_code.val())
         _updateTimeout = null
       },
 
@@ -171,8 +167,6 @@
         _canvas.width = canvW
         _canvas.height = canvH
         sys.screenSize(canvW, canvH)
-
-        _code.css({height:h-20,  width:edW-4, marginLeft:2})
       },
 
       grabbed:function(e){
