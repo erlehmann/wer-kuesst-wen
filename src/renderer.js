@@ -90,6 +90,7 @@
             ctx.fillText(label||"", pt.x, pt.y+4)
             ctx.fillText(label||"", pt.x, pt.y+4)
           }
+
         })    			
 
 
@@ -143,6 +144,7 @@
               ctx.fill();
             ctx.restore()
           }
+
         })
 
 
