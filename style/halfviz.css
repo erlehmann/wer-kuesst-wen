@@ -47,7 +47,7 @@ label+input{
   top:0;
   width:256px;
   bottom:10px;
-  overflow:hidden;
+  overflow-x:hidden;
   border:1px solid #ccb;
   padding-left:0px;
   background:white;

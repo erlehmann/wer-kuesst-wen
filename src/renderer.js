@@ -175,7 +175,8 @@
           },
 
           metadataUpdate:function(e){
-            $('#metadata').text(JSON.stringify(nearest.node.data, null, ' '))
+            $('#node_names').val(nearest.node.data.names.join('\n'))
+            $('#node_urls').val(nearest.node.data.urls.join('\n'))
             return false
           },
 

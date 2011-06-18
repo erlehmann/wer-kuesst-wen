@@ -47,6 +47,12 @@
       return sys.getNodeByUrl(query) || sys.getNodeByName(query) || false
     }
 
+    sys.updateNode = function(node, names, urls){
+      // FIXME: build better merge magic
+      node.data.names = names
+      node.data.urls = urls
+    }
+
     var _ed = dom.find('#editor')
     var _canvas = dom.find('#viewport').get(0)
     var _grabber = dom.find('#grabber')
@@ -103,10 +109,24 @@
       },
 
       addNode:function(e){
-        sys.addNode(Math.uuid(), {
-          names: String(e.names).split('\n'),
-          urls: String(e.urls).split('\n')
+        var names = String(e.names).split('\n')
+        var urls = String(e.urls).split('\n')
+        var node_exists = false
+
+        $.each(urls, function(i, url){
+          var node = sys.getNodeByUrl(url)
+          if(node !== false){
+            sys.updateNode(node, names, urls)
+            node_exists = true
+          }
         })
+
+        if(node_exists === false) {
+          sys.addNode(Math.uuid(), {
+            names: names,
+            urls: urls
+          })
+        }
       },
 
       addEdge:function(e){
