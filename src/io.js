@@ -25,8 +25,8 @@
       addNodeClick:function(e){
         $(that).trigger({
           type: 'addNode',
-          names: [$('#node_name').val()],
-          urls: [$('#node_url').val()]
+          names: [$('#node_names').val()],
+          urls: [$('#node_urls').val()]
         })
       },
 
