@@ -53,6 +53,37 @@
       node.data.urls = urls
     }
 
+    sys.exportJSON = function(){
+      var data = {
+          nodes: {},
+          edges: {}
+        }
+
+      sys.eachNode(function(node, px){
+        data.nodes[node.name] = {
+          names: node.data.names,
+          urls: node.data.urls
+        }
+      })
+
+      sys.eachEdge(function(edge, pt1, pt2){
+        source = edge.source.name
+        target = edge.target.name
+        if (typeof data.edges[source] === typeof undefined){
+          // create source entry
+          data.edges[source] = {}
+        }
+        // update source entry
+        data.edges[source][target] = {}
+      })
+
+      return JSON.stringify(data, null, 2)
+    }
+
+    sys.importJSON = function(json){
+      sys.graft(JSON.parse(json))
+    }
+
     var _ed = dom.find('#editor')
     var _canvas = dom.find('#viewport').get(0)
     var _grabber = dom.find('#grabber')
