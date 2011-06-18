@@ -39,26 +39,32 @@
 
           // draw profile pictures
           $.each(node.data.urls, function(index, url) {
-            console.log(index, url)
+            var icon_url
 
             fb_prefix = 'http://www.facebook.com/'
             if (url.substring(0, fb_prefix.length) === fb_prefix){
                 var fb_id = url.substr(fb_prefix.length)
                 var img_url = 'https://graph.facebook.com/' + fb_id + '/picture'
-                console.log(fb_id)
+                icon_url = 'img/facebook.png'
             }
 
             tw_prefix = 'http://twitter.com/'
             if (url.substring(0, tw_prefix.length) === tw_prefix){
                 var tw_id = url.substr(tw_prefix.length)
                 var img_url = 'http://api.twitter.com/1/users/profile_image/' + tw_id
-                console.log(tw_id)
+                icon_url = 'img/twitter.png'
             }
 
+            var img = new Image()
             if (typeof img_url === 'string'){
-                var img = new Image()
                 img.src = img_url
                 ctx.drawImage(img, pt.x-(img.width/2), pt.y-(img.height+12))
+            }
+
+            if (typeof icon_url === 'string'){
+                var icon_img = new Image()
+                icon_img.src = icon_url
+                ctx.drawImage(icon_img, pt.x-(img.width/2), pt.y-(icon_img.height+12))
             }
           })
 
