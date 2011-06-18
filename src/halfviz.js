@@ -75,6 +75,7 @@
         $(that.io).bind('addEdge', that.addEdge)
 
         $(that.io).bind('removeNode', that.removeNode)
+        $(that.io).bind('removeEdge', that.removeEdge)
         return that
       },
 
@@ -117,6 +118,7 @@
         var node2 = sys.getNodeByUrlOrName(e.name2)
         if(node1 && node2){
           sys.addEdge(node1, node2)
+          sys.addEdge(node2, node1)
         }
       },
 
@@ -124,6 +126,18 @@
         var node = sys.getNodeByUrlOrName(e.name)
         if(node){
           sys.pruneNode(node)
+        }
+      },
+
+      removeEdge:function(e){
+        var node1 = sys.getNodeByUrlOrName(e.name1)
+        var node2 = sys.getNodeByUrlOrName(e.name2)
+        if(node1 && node2){
+          var edges1 = sys.getEdges(node1, node2)
+          var edges2 = sys.getEdges(node2, node1)
+          $.each(edges1.concat(edges2), function(i, edge){
+            sys.pruneEdge(edge)
+          })
         }
       },
 

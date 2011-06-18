@@ -15,6 +15,7 @@
         $('#add_edge').bind('click', that.addEdgeClick)
 
         $('#remove_node').bind('click', that.removeNodeClick)
+        $('#remove_edge').bind('click', that.removeEdgeClick)
 
         dom.find('.ctrl > a').live('click', that.menuClick)
 
@@ -44,6 +45,14 @@
           name: $('#node_0').val()
         })
         return false
+      },
+
+      removeEdgeClick:function(e){
+        $(that).trigger({
+          type: 'removeEdge',
+          name1: $('#node_1').val(),
+          name2: $('#node_2').val()
+        })
       },
 
       menuClick:function(e){
