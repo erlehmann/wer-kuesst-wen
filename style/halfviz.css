@@ -2,22 +2,35 @@ html{
   width:100%;
   height:100%;
 }
+
 body{
+  line-height:1.5;
   margin:0;
   width:100%;
   height:100%;
   background:#665;
 }
 
+label,
+label+input{
+  display:inline-block;
+}
+
+label{
+  width:37.5%;
+}
+
+label+input{
+  width:62.5%;
+}
+
 #halfviz{
-/*  float:left;*/
   position:absolute;
   top:56px;
   left:10px;
   right:10px;
   bottom:10px;
   padding:0 10px;
-
   background:#fffff3;
   border-radius:4px;
   z-index:1;
@@ -25,10 +38,6 @@ body{
 
 #viewport{
   background:white;
-/*  position:absolute;*/
-/*  top:10px;*/
-/*  left:270px;*/
-/*  margin:10px 0;*/
 }
 
 
@@ -138,13 +147,8 @@ a.update{
   background:#554;
   border-radius:4px;
   display:block;
-/*  overflow:hidden;*/
 }
 
-/*#dashboard a.about:hover{
-  text-decoration:underline;
-}
-*/
 #dashboard a.help{
   display:block;
   float:right;
@@ -211,21 +215,19 @@ a.update{
   cursor:pointer;
 }
 
-.io{
-/*  position:absolute;*/
-/*  right:10px;
-  top:30px;
-*/
-  margin-left:-1px;
-  padding:2px 1px 2px 0;
-  font: 10px/16px Arial, sans-serif;
-  color:#666;
-  height:17px;
-  width:100%;
-  background:#333;
-  overflow:hidden;
+.editor {
+  padding:1em;
 }
 
+.io {
+  background-color:rgba(0,0,0,.8);
+  color:rgba(255,255,255,.8);
+  width:100%;
+}
+
+#metadata {
+  white-space: pre-wrap;
+}
 
 .io .ctrl a.syntax{
   float:right;

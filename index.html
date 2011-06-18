@@ -161,7 +161,32 @@
     <canvas id="viewport" width="800" height="600"></canvas>
     <div id="editor">
       <div class="io">
-        <div class="ctrl"><a href="#" class="new">clear</a></div>
+        <div class="ctrl">
+          <a href="#" class="new">example content</a>
+          <h1>Person hinzufügen</h1>
+
+          <label for="node_name">Name:</label>
+          <input id="node_name" type="text">
+
+          <label for="node_url">URL:</label>
+          <input id="node_url" type="url">
+
+          <button class="add">Hinzufügen</button>
+        </div>
+        <div>
+          <h1>Kuss hinzufügen</h1>
+
+          <label>Person 1:</label>
+          <input type="text">
+
+          <label>Person 2:</label>
+          <input type="text">
+
+          <button class="add">Hinzufügen</button>
+        </div>
+      </div>
+      <div id="metadata">
+        <!-- here be node / edge information -->
       </div>
       <textarea id="code"></textarea>  
     </div>

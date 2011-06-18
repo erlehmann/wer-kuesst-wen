@@ -165,11 +165,18 @@
 
             if (dragged.node !== null) dragged.node.fixed = true
 
+            $(canvas).bind('mousedown', handler.metadataUpdate)
             $(canvas).bind('mousemove', handler.dragged)
             $(window).bind('mouseup', handler.dropped)
 
             return false
           },
+
+          metadataUpdate:function(e){
+            $('#metadata').text(JSON.stringify(nearest.node.data, null, ' '))
+            return false
+          },
+
           dragged:function(e){
             var old_nearest = nearest && nearest.node._id
             var pos = $(canvas).offset();
