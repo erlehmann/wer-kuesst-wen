@@ -9,7 +9,6 @@
   trace = arbor.etc.trace
   objmerge = arbor.etc.objmerge
   objcopy = arbor.etc.objcopy
-  var parse = Parseur().parse
 
   var HalfViz = function(elt){
     var dom = $(elt)
@@ -72,12 +71,7 @@
       },
 
       updateGraph:function(e){
-        var src_txt = _code.val()
-        var network = parse(src_txt)
-        $.each(network.nodes, function(nname, ndata){
-          if (ndata.label===undefined) ndata.label = nname
-        })
-        sys.merge(network)
+        console.log(_code.val())
         _updateTimeout = null
       },
       
