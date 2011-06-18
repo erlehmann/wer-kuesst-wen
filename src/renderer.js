@@ -37,9 +37,34 @@
             label = null
           }
 
+          // draw profile pictures
+          $.each(node.data.urls, function(index, url) {
+            console.log(index, url)
+
+            fb_prefix = 'http://www.facebook.com/'
+            if (url.substring(0, fb_prefix.length) === fb_prefix){
+                var fb_id = url.substr(fb_prefix.length)
+                var img_url = 'https://graph.facebook.com/' + fb_id + '/picture'
+                console.log(fb_id)
+            }
+
+            tw_prefix = 'http://twitter.com/'
+            if (url.substring(0, tw_prefix.length) === tw_prefix){
+                var tw_id = url.substr(tw_prefix.length)
+                var img_url = 'http://api.twitter.com/1/users/profile_image/' + tw_id
+                console.log(tw_id)
+            }
+
+            if (typeof img_url === 'string'){
+                var img = new Image()
+                img.src = img_url
+                ctx.drawImage(img, pt.x-(img.width/2), pt.y-(img.height+12))
+            }
+          })
+
           // draw a rectangle centered at pt
           if (node.data.color) ctx.fillStyle = node.data.color
-          else ctx.fillStyle = "rgba(0,0,0,.2)"
+          else ctx.fillStyle = "rgba(0,0,0,.8)"
           if (node.data.color=='none') ctx.fillStyle = "white"
 
           if (node.data.shape=='dot'){
@@ -80,7 +105,7 @@
           ctx.save() 
             ctx.beginPath()
             ctx.lineWidth = (!isNaN(weight)) ? parseFloat(weight) : 1
-            ctx.strokeStyle = (color) ? color : "#cccccc"
+            ctx.strokeStyle = (color) ? color : "rgba(0,0,0,.8)"
             ctx.fillStyle = null
 
             ctx.moveTo(tail.x, tail.y)
