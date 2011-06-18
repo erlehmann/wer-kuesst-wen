@@ -103,8 +103,7 @@
       },
 
       addNode:function(e){
-        // FIXME: use UUID or something
-        sys.addNode(e.names[0], {
+        sys.addNode(Math.uuid(), {
           names: String(e.names).split('\n'),
           urls: String(e.urls).split('\n')
         })
