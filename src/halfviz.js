@@ -73,6 +73,8 @@
 
         $(that.io).bind('addNode', that.addNode)
         $(that.io).bind('addEdge', that.addEdge)
+
+        $(that.io).bind('removeNode', that.removeNode)
         return that
       },
 
@@ -111,10 +113,17 @@
       },
 
       addEdge:function(e){
-        node1 = sys.getNodeByUrlOrName(e.name1)
-        node2 = sys.getNodeByUrlOrName(e.name2)
+        var node1 = sys.getNodeByUrlOrName(e.name1)
+        var node2 = sys.getNodeByUrlOrName(e.name2)
         if(node1 && node2){
           sys.addEdge(node1, node2)
+        }
+      },
+
+      removeNode:function(e){
+        var node = sys.getNodeByUrlOrName(e.name)
+        if(node){
+          sys.pruneNode(node)
         }
       },
 
