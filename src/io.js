@@ -36,14 +36,18 @@
           name1: $('#node_1').val(),
           name2: $('#node_2').val()
         })
+        $('#node_1').val('')
+        $('#node_2').val('')
         return false
       },
 
       removeNodeClick:function(e){
         $(that).trigger({
           type: 'removeNode',
-          name: $('#node_0').val()
+          urls: $('#node_urls').val()
         })
+        $('#node_names').val('')
+        $('#node_urls').val('')
         return false
       },
 

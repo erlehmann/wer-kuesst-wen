@@ -139,10 +139,14 @@
       },
 
       removeNode:function(e){
-        var node = sys.getNodeByUrlOrName(e.name)
-        if(node){
-          sys.pruneNode(node)
-        }
+        var urls = String(e.urls).split('\n')
+        $.each(urls, function(i, url){
+          var node = sys.getNodeByUrl(url)
+          console.log(i, url, node, sys.getNodeByUrl(url))
+          if(node){
+            sys.pruneNode(node)
+          }
+        })
       },
 
       removeEdge:function(e){
