@@ -11,9 +11,20 @@
     var that = {
       init:function(){
 
+        $('#add_edge').bind('click', that.addEdgeClick)
+
         dom.find('.ctrl > a').live('click', that.menuClick)
 
         return that
+      },
+
+      addEdgeClick:function(e){
+        $(that).trigger({
+          type: 'addEdge',
+          name1: $('#node_1').val(),
+          name2: $('#node_2').val()
+        })
+        return false
       },
 
       menuClick:function(e){

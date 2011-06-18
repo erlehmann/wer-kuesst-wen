@@ -17,6 +17,36 @@
     sys.renderer = Renderer("#viewport") // our newly created renderer will have its .init() method called shortly by sys...
     sys.screenPadding(20)
 
+    sys.getNodeByName = function(name){
+      var target_node
+      sys.eachNode(function(node, pt){
+        $.each(node.data.names, function(i, node_name){
+          if(name === node_name) {
+            target_node = node
+            return false  // break $.each()
+          }
+        })
+      })
+      return target_node || false
+    }
+
+    sys.getNodeByUrl = function(url){
+      var target_node
+      sys.eachNode(function(node, pt){
+        $.each(node.data.urls, function(i, node_url){
+          if(url === node_url) {
+            target_node = node
+            return false  // break $.each()
+          }
+        })
+      })
+      return target_node || false
+    }
+
+    sys.getNodeByUrlOrName = function(query){
+      return sys.getNodeByUrl(query) || sys.getNodeByName(query) || false
+    }
+
     var _ed = dom.find('#editor')
     var _code = dom.find('textarea')
     var _canvas = dom.find('#viewport').get(0)
@@ -40,6 +70,7 @@
 
         $(that.io).bind('get', that.getDoc)
         $(that.io).bind('clear', that.newDoc)
+        $(that.io).bind('addEdge', that.addEdge)
         return that
       },
 
@@ -67,6 +98,14 @@
         that.updateGraph()
         that.resize()
         _editing = false
+      },
+
+      addEdge:function(e){
+        node1 = sys.getNodeByUrlOrName(e.name1)
+        node2 = sys.getNodeByUrlOrName(e.name2)
+        if(node1 && node2){
+          sys.addEdge(node1, node2)
+        }
       },
 
       updateGraph:function(e){
