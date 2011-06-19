@@ -17,8 +17,6 @@
         $('#remove_node').bind('click', that.removeNodeClick)
         $('#remove_edge').bind('click', that.removeEdgeClick)
 
-        dom.find('.ctrl > a').live('click', that.menuClick)
-
         return that
       },
 
@@ -57,20 +55,8 @@
           name1: $('#node_1').val(),
           name2: $('#node_2').val()
         })
-      },
-
-      menuClick:function(e){
-        var button = (e.target.tagName=='A') ? $(e.target) : $(e.target).closest('a')
-        var type = button.attr('class').replace(/\s?(selected|active)\s?/,'')
-
-        switch(type){
-        case "new":
-          $(that).trigger({type:"clear"})
-          break
-        }
-
-        return false
       }
+
     }
 
     return that.init()
