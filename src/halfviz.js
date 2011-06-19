@@ -89,7 +89,10 @@
     }
 
     sys.load = function(){
-      sys.importJSON(localStorage.json)
+      json = localStorage.json
+      if(typeof json === 'string') {
+        sys.importJSON(json)
+      }
     }
 
     var _ed = dom.find('#editor')
