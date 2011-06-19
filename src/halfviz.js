@@ -84,6 +84,14 @@
       sys.graft(JSON.parse(json))
     }
 
+    sys.save = function(){
+      localStorage.json = sys.exportJSON()
+    }
+
+    sys.load = function(){
+      sys.importJSON(localStorage.json)
+    }
+
     var _ed = dom.find('#editor')
     var _canvas = dom.find('#viewport').get(0)
     var _grabber = dom.find('#grabber')
@@ -111,6 +119,11 @@
 
         $(that.io).bind('removeNode', that.removeNode)
         $(that.io).bind('removeEdge', that.removeEdge)
+
+        sys.load()
+        setInterval(sys.save, 10000)
+        $(window).unload(sys.save);
+
         return that
       },
 
