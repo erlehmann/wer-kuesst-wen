@@ -107,7 +107,7 @@
 
         $(window).resize(that.resize)
         that.resize()
-        that.updateLayout(Math.max(1, $(window).width()-340))
+        that.updateLayout(Math.max(1, $(window).width()-386))
 
         _grabber.bind('mousedown', that.grabbed)
 

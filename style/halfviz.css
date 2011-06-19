@@ -16,26 +16,44 @@ body{
   background:#665;
 }
 
-label{
-  width:6em;
+button,
+input,
+label,
+textarea{
+  margin:5px 0px;
+  min-width:6em;
+  padding:5px;
 }
 
+label{
+  padding-left:0px;
+}
+
+input,
+label,
 textarea{
+  -moz-box-sizing:border-box;
+  -ms-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  box-sizing:border-box;
   display:block;
   width:100%;
 }
 
-label+input{
-}
-
 button.add,
+button.clear,
 button.remove{
   background-repeat:no-repeat;
-  padding-left: 16px;
+  background-position:5px 50%;
+  padding-left:26px;
 }
 
 button.add{
   background-image:url('../img/list-add.png');
+}
+
+button.clear{
+  background-image:url('../img/edit-clear.png');
 }
 
 button.remove{
@@ -63,9 +81,9 @@ button.remove{
   position:absolute;
   right:10px;
   top:0;
-  width:256px;
+  width:346px;
   bottom:10px;
-  overflow-x:hidden;
+  overflow:hidden;
   border:1px solid #ccb;
   padding-left:0px;
   background:white;
@@ -77,7 +95,7 @@ button.remove{
   width:8px;
   top:0px;
   bottom:10px;
-  left:800px;
+  right:358px;
 }
 
 #grabber:hover{
