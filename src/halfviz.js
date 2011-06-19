@@ -126,7 +126,7 @@
         $(that.io).bind('clearText', that.clearText)
 
         sys.load()
-        setInterval(sys.save, 10000)
+        setInterval(sys.save, 2000)
         $(window).unload(sys.save);
 
         return that
