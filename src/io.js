@@ -28,6 +28,9 @@
           names: [$('#node_names').val()],
           urls: [$('#node_urls').val()]
         })
+        $('#node_names').val('')
+        $('#node_urls').val('')
+        return false
       },
 
       addEdgeClick:function(e){
@@ -57,6 +60,9 @@
           name1: $('#node_1').val(),
           name2: $('#node_2').val()
         })
+        $('#node_1').val('')
+        $('#node_2').val('')
+        return false
       },
 
       clearTextClick:function(e){
@@ -67,6 +73,7 @@
             $('#node_urls')
           ]
         })
+        return false
       }
 
     }
