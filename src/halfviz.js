@@ -260,20 +260,6 @@
       released:function(e){
         $(window).unbind('mousemove', that.dragged)
         return false
-      },
-      typing:function(e){
-        var c = e.keyCode
-        if ($.inArray(c, [37, 38, 39, 40, 16])>=0){
-          return
-        }
-
-        if (!_editing){
-          $.address.value("")
-        }
-        _editing = true
-
-        if (_updateTimeout) clearTimeout(_updateTimeout)
-        _updateTimeout = setTimeout(that.updateGraph, 900)
       }
     }
 
