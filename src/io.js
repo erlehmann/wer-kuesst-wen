@@ -17,6 +17,8 @@
         $('#remove_node').bind('click', that.removeNodeClick)
         $('#remove_edge').bind('click', that.removeEdgeClick)
 
+        $('#clear_text').bind('click', that.clearTextClick)
+
         return that
       },
 
@@ -54,6 +56,16 @@
           type: 'removeEdge',
           name1: $('#node_1').val(),
           name2: $('#node_2').val()
+        })
+      },
+
+      clearTextClick:function(e){
+        $(that).trigger({
+          type: 'clearText',
+          nodes: [
+            $('#node_names'),
+            $('#node_urls')
+          ]
         })
       }
 

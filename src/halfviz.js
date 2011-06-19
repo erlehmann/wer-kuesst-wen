@@ -120,6 +120,8 @@
         $(that.io).bind('removeNode', that.removeNode)
         $(that.io).bind('removeEdge', that.removeEdge)
 
+        $(that.io).bind('clearText', that.clearText)
+
         sys.load()
         setInterval(sys.save, 10000)
         $(window).unload(sys.save);
@@ -202,6 +204,12 @@
             sys.pruneEdge(edge)
           })
         }
+      },
+
+      clearText:function(e){
+        $.each(e.nodes, function(i, node){
+          node.val('')
+        })
       },
 
       updateGraph:function(e){
