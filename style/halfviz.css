@@ -16,6 +16,11 @@ body{
   background:#665;
 }
 
+.io h1{
+  font-size:1.5em;
+  line-height:1.3333em;
+}
+
 button,
 input,
 label,
@@ -38,6 +43,25 @@ textarea{
   box-sizing:border-box;
   display:block;
   width:100%;
+}
+
+div.line{
+  height:3em;
+  position:relative;
+}
+
+div.line > label{
+  position:absolute;
+  top:0;
+  width:6em;
+}
+
+div.line > input{
+  left:6em;
+  position:absolute;
+  right:0;
+  top:0;
+  width:inherit;
 }
 
 button.add,

@@ -16,10 +16,10 @@
           <h1>Personen</h1>
 
           <label for="node_names">Namen (ein Name pro Zeile)</label>
-          <textarea id="node_names" rows=3></textarea>
+          <textarea id="node_names" rows=2></textarea>
 
           <label for="node_urls">URLs (ein URL pro Zeile)</label>
-          <textarea id="node_urls" rows=3></textarea>
+          <textarea id="node_urls" rows=2></textarea>
 
           <button id="add_node" class="add">Hinzufügen</button>
           <button id="clear_text" class="clear">Textfelder leeren</button>
@@ -28,11 +28,15 @@
         <div>
           <h1>Beziehungen</h1>
 
-          <label for="node_1">Name / URL</label>
-          <input id="node_1" type="text">
+          <div class="line">
+            <label for="node_1">Name / URL</label>
+            <input id="node_1" type="text">
+          </div>
 
-          <label for="node_2">Name / URL</label>
-          <input id="node_2" type="text">
+          <div class="line">
+            <label for="node_2">Name / URL</label>
+            <input id="node_2" type="text">
+          </div>
 
           <button id="add_edge" class="add">Hinzufügen</button>
           <button id="remove_edge" class="remove">Entfernen</button>
