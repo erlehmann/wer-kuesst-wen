@@ -6,6 +6,7 @@
 //
 (function(){
 
+  window.Worker = undefined  // web workers disabled, arbor claims like 10MB/sec
   trace = arbor.etc.trace
   objmerge = arbor.etc.objmerge
   objcopy = arbor.etc.objcopy
