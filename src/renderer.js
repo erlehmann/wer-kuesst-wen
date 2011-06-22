@@ -10,7 +10,7 @@
       init:function(system){
         particleSystem = system
         particleSystem.screenSize(canvas.width, canvas.height) 
-        particleSystem.screenPadding(40)
+        particleSystem.screenPadding(80, 60, 20, 60)
 
         that.initMouseHandling()
       },
