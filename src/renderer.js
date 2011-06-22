@@ -175,8 +175,24 @@
           },
 
           metadataUpdate:function(e){
-            $('#node_names').val(nearest.node.data.names.join('\n'))
-            $('#node_urls').val(nearest.node.data.urls.join('\n'))
+            var node = nearest.node
+            $('#node_names').val(node.data.names.join('\n'))
+            $('#node_urls').val(node.data.urls.join('\n'))
+            $('#analysis-name').text(node.data.names[0])
+            $('#analysis-list').empty()
+
+            var adjacentNodes = sys.getAdjacentNodes(node)
+            var favoriteNodes = sys.getAdjacentNodeFavorites(node)
+
+            $.each(favoriteNodes, function(name, count){
+              var favoriteNode = sys.getNode(name)
+              var percentage = (count/adjacentNodes.length)*100
+
+              $('#analysis-list').append(
+                '<li>' + favoriteNode.data.names[0] + ' (' + Math.round(percentage) + '%)'
+              )
+            })
+
             return false
           },
 

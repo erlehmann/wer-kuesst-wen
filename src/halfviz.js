@@ -54,6 +54,55 @@
       node.data.urls = urls
     }
 
+    sys.getAdjacentNodes = function(node){
+        var nodedict = {}
+
+        var to = sys.getEdgesTo(node)
+        $.each(to, function(i, edge){
+            nodedict[edge.source._id] = edge.source
+        })
+
+        var from = sys.getEdgesFrom(node)
+        $.each(from, function(i, edge){
+            nodedict[edge.target._id] = edge.target
+        })
+
+        var nodes = []
+        $.each(nodedict, function(i, node){
+            nodes.push(node)
+        })
+        return nodes
+    }
+
+    sys.getAdjacentNodeFavorites = function(node){
+        var nodedict = {}
+
+        var nodes1 = sys.getAdjacentNodes(node)
+        $.each(nodes1, function(i, node1){
+            var nodes2 = sys.getAdjacentNodes(node1)
+            $.each(nodes2, function(i, node2){
+                if (typeof nodedict[node2.name] === typeof undefined){
+                    nodedict[node2.name] = 1
+                } else {
+                    nodedict[node2.name] += 1
+                }
+            })
+        })
+        delete nodedict[node.name]
+
+        var unwanted = []
+        $.each(nodedict, function(name, count){
+            if (count < 2){
+                unwanted.push(name)
+            }
+        })
+        $.each(unwanted, function(i, name){
+            delete nodedict[name]
+        })
+
+        return nodedict
+    }
+
     sys.exportJSON = function(){
       var data = {
           nodes: {},
