@@ -37,21 +37,27 @@
             label = null
           }
 
-          // try to set profile picture if not there
-          if (typeof node.data.img === typeof undefined){
-            $.each(node.data.urls, function(index, url) {
+          $.each(node.data.urls, function(index, url) {
+            // try to set profile picture if not there
+            if (typeof node.data.img === typeof undefined){
               var icon_url
 
-              fb_prefix = 'http://www.facebook.com/'
-              if (url.substring(0, fb_prefix.length) === fb_prefix){
-                  var fb_id = url.substr(fb_prefix.length)
+              // inefficient placement of this code
+              String.prototype.endsWith = function (s) {
+                return this.length >= s.length && this.substr(this.length - s.length) == s;
+              }
+
+              parseUri.options.strictMode = true
+              var parseResult = parseUri(url)
+
+              if (parseResult.host.endsWith('facebook.com')){
+                  var fb_id = parseResult.file
                   var img_url = 'https://graph.facebook.com/' + fb_id + '/picture'
                   icon_url = 'img/facebook.png'
               }
 
-              tw_prefix = 'http://twitter.com/'
-              if (url.substring(0, tw_prefix.length) === tw_prefix){
-                  var tw_id = url.substr(tw_prefix.length)
+              if (parseResult.host.endsWith('twitter.com')){
+                  var tw_id = parseResult.file
                   var img_url = 'http://api.twitter.com/1/users/profile_image/' + tw_id
                   icon_url = 'img/twitter.png'
               }
@@ -67,8 +73,8 @@
                   icon.src = icon_url
                   node.data.icon = icon
               }
-            })
-          }
+            }
+          })
 
           var img = node.data.img
           if (typeof img !== typeof undefined){
