@@ -181,8 +181,6 @@
         $(that.io).bind('clearText', that.clearText)
 
         sys.load()
-        setInterval(sys.save, 2000)
-        $(window).unload(sys.save);
 
         return that
       },
@@ -249,6 +247,8 @@
             urls: urls
           })
         }
+
+        sys.save()
       },
 
       addEdge:function(e){
@@ -258,6 +258,8 @@
           sys.addEdge(node1, node2)
           sys.addEdge(node2, node1)
         }
+
+        sys.save()
       },
 
       removeNode:function(e){
@@ -268,6 +270,8 @@
             sys.pruneNode(node)
           }
         })
+
+        sys.save()
       },
 
       removeEdge:function(e){
@@ -280,6 +284,8 @@
             sys.pruneEdge(edge)
           })
         }
+
+        sys.save()
       },
 
       clearText:function(e){
