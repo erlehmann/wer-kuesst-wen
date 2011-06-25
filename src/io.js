@@ -11,7 +11,8 @@
     var that = {
       init:function(){
 
-        $('#node_urls').change(that.completeNodeName)
+        $('#node_urls').change(that.completeNodeNames)
+        $('#node_names').change(that.completeNodeNames)
 
         $('#add_node').bind('click', that.addNodeClick)
         $('#add_edge').bind('click', that.addEdgeClick)
@@ -24,11 +25,11 @@
         return that
       },
 
-      completeNodeName:function(e){
+      completeNodeNames:function(e){
         $(that).trigger({
-          type: 'completeNodeName',
+          type: 'completeNodeNames',
           nameNode: $('#node_names'),
-          urls: e.target.value
+          urls: $('#node_urls').val()
         })
       },
 

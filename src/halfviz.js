@@ -170,7 +170,7 @@
         $(that.io).bind('get', that.getDoc)
         $(that.io).bind('clear', that.newDoc)
 
-        $(that.io).bind('completeNodeName', that.completeNodeName)
+        $(that.io).bind('completeNodeNames', that.completeNodeNames)
 
         $(that.io).bind('addNode', that.addNode)
         $(that.io).bind('addEdge', that.addEdge)
@@ -210,20 +210,38 @@
         _editing = false
       },
 
-      completeNodeName:function(e){
+      completeNodeNames:function(e){
         var urls = String(e.urls).split('\n')
 
         $.each(urls, function(i, url){
-          if ($('#node_names').val() == ''){
-            g_url = 'https://socialgraph.googleapis.com/lookup?&q=' + url
-            $.getJSON(g_url + '&callback=?', function(json){
-              try {
-                var name = json.nodes[url].attributes.fn
-                e.nameNode.val(name)
-              } catch(e){
-                // pass if property is not there
-              }
-            })
+          if (e.nameNode.val() == ''){
+            // FIXME: inefficient placement of this code
+            String.prototype.endsWith = function (s) {
+              return this.length >= s.length && this.substr(this.length - s.length) == s;
+            }
+
+            parseUri.options.strictMode = true
+            var parseResult = parseUri(url)
+
+            if (parseResult.host.endsWith('twitter.com')){
+              var tw_id = parseResult.file
+              var tw_url = 'http://api.twitter.com/1/users/show/' + tw_id + '.json'
+              $.getJSON(tw_url + '?callback=?', function(json){
+                var name = json.name
+                var screen_name = json.screen_name
+                e.nameNode.val(screen_name + '\n' + name)
+              })
+            } else {
+              var g_url = 'https://socialgraph.googleapis.com/lookup?&q=' + url
+              $.getJSON(g_url + '&callback=?', function(json){
+                try {
+                  var name = json.nodes[url].attributes.fn
+                  e.nameNode.val(name)
+                } catch(e){
+                  // pass if property is not there
+                }
+              })
+            }
           }
         })
       },
