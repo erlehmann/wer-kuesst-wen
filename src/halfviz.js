@@ -170,6 +170,8 @@
         $(that.io).bind('get', that.getDoc)
         $(that.io).bind('clear', that.newDoc)
 
+        $(that.io).bind('completeNodeName', that.completeNodeName)
+
         $(that.io).bind('addNode', that.addNode)
         $(that.io).bind('addEdge', that.addEdge)
 
@@ -208,6 +210,24 @@
         that.updateGraph()
         that.resize()
         _editing = false
+      },
+
+      completeNodeName:function(e){
+        var urls = String(e.urls).split('\n')
+
+        $.each(urls, function(i, url){
+          if ($('#node_names').val() == ''){
+            g_url = 'https://socialgraph.googleapis.com/lookup?&q=' + url
+            $.getJSON(g_url + '&callback=?', function(json){
+              try {
+                var name = json.nodes[url].attributes.fn
+                e.nameNode.val(name)
+              } catch(e){
+                // pass if property is not there
+              }
+            })
+          }
+        })
       },
 
       addNode:function(e){
