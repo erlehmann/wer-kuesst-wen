@@ -42,7 +42,7 @@
             if (typeof node.data.img === typeof undefined){
               var icon_url
 
-              // inefficient placement of this code
+              // FIXME: inefficient placement of this code
               String.prototype.endsWith = function (s) {
                 return this.length >= s.length && this.substr(this.length - s.length) == s;
               }
@@ -51,27 +51,27 @@
               var parseResult = parseUri(url)
 
               if (parseResult.host.endsWith('facebook.com')){
-                  var fb_id = parseResult.file
-                  var img_url = 'https://graph.facebook.com/' + fb_id + '/picture'
-                  icon_url = 'img/facebook.png'
+                var fb_id = parseResult.file
+                var img_url = 'https://graph.facebook.com/' + fb_id + '/picture'
+                icon_url = 'img/facebook.png'
               }
 
               if (parseResult.host.endsWith('twitter.com')){
-                  var tw_id = parseResult.file
-                  var img_url = 'http://api.twitter.com/1/users/profile_image/' + tw_id
-                  icon_url = 'img/twitter.png'
+                var tw_id = parseResult.file
+                var img_url = 'http://api.twitter.com/1/users/profile_image/' + tw_id
+                icon_url = 'img/twitter.png'
               }
 
               var img = new Image()
               if (typeof img_url === 'string'){
-                  img.src = img_url
-                  node.data.img = img
+                img.src = img_url
+                node.data.img = img
               }
 
               if (typeof icon_url === 'string'){
-                  var icon = new Image()
-                  icon.src = icon_url
-                  node.data.icon = icon
+                var icon = new Image()
+                icon.src = icon_url
+                node.data.icon = icon
               }
             }
           })
