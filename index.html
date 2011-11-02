@@ -34,15 +34,14 @@
           <ul id="relationship-list">
           </ul>
 
-          <button id="clear_text" class="btn success">Neuen Kuss eintragen</button>
+          <button id="show_edge_form" class="btn success">Neue Knutscherei mit <span id="relationship-list-name" class="selected_name">Person</span></button>
 
-          <label for="node_1">Name / URL</label>
-          <input id="node_1" type="text">
+          <div id="edge_form">
+            <label for="edge_node">Name / URL</label>
+            <input id="edge_node" type="text">
 
-          <label for="node_2">Name / URL</label>
-          <input id="node_2" type="text">
-
-          <button id="add_edge" class="btn primary add">Knutscherei speichern</button>
+            <button id="add_edge" class="btn primary add">Knutscherei mit <span id="relationship-list-name" class="selected_name">Person</span> speichern</button>
+          </div>
         </div>
         <div>
           <h2>Empfehlungen</h2>
@@ -69,8 +68,8 @@
             sys.save()
           }
         </script>
-        <button onclick="javascript:reset()" class="btn remove">
-          Bei Fersagen Knopf drücken, Mutterbegatter!
+        <button id=reset class="btn danger" onclick="javascript:reset()">
+          <b>Nuklearangriff aus dem Orbit</b>
         </button>
       </div>
     </div>
@@ -101,7 +100,8 @@
     }
     $('#node_urls').twipsy(options)
     $('#node_names').twipsy(options)
-  </script>
 
+    $('#edge_form').toggle()
+  </script>
 </body>
 </html>

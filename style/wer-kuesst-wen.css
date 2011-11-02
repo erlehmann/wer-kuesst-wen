@@ -33,7 +33,8 @@ button:last-of-type(){
   margin-left:0;
 }
 
-button#clear_text{
+button#clear_text,
+button#show_edge_form{
   float:left;
 }
 

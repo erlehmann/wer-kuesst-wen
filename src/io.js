@@ -24,6 +24,7 @@
         $('.remove_edge').live('click', that.removeEdgeClick)
 
         $('#clear_text').bind('click', that.clearTextClick)
+        $('#show_edge_form').bind('click', that.toggleEdgeForm)
 
         return that
       },
@@ -54,11 +55,12 @@
       addEdgeClick:function(e){
         $(that).trigger({
           type: 'addEdge',
-          name1: $('#node_1').val(),
-          name2: $('#node_2').val()
+          name1: $('#relationship-list-name').text(),
+          name2: $('#edge_node').val()
         })
-        $('#node_1').val('')
-        $('#node_2').val('')
+        $('#edge_node').val('')
+        $('#edge_form').toggle()
+        $('#show_edge_form').toggle()
         return false
       },
 
@@ -95,6 +97,11 @@
         })
         $('#clear_text').attr('disabled', 'disabled')
         return false
+      },
+
+      toggleEdgeForm:function(e){
+        $('#edge_form').toggle()
+        $('#show_edge_form').toggle()
       }
 
     }
