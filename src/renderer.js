@@ -200,6 +200,7 @@
             
             $('#update_node').attr('disabled', 'disabled')
             $('#remove_node').removeAttr('disabled')
+            $('#clear_text').removeAttr('disabled')
 
             var adjacentNodes = sys.getAdjacentNodes(node)
             $('#relationship-list').empty()

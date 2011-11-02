@@ -26,9 +26,16 @@ button{
 }
 
 button+button{
-  margin-right:10px;
+  margin-left:10px;
 }
 
+button:last-of-type(){
+  margin-left:0;
+}
+
+button#clear_text{
+  float:left;
+}
 
 ul{
   margin:0;

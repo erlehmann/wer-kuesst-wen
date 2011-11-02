@@ -69,7 +69,9 @@
         })
         $('#node_names').val('')
         $('#node_urls').val('')
+        $('#update_node').attr('disabled', 'disabled')
         $('#remove_node').attr('disabled', 'disabled')
+        $('#clear_text').attr('disabled', 'disabled')
         return false
       },
 
@@ -91,6 +93,7 @@
             $('#node_urls')
           ]
         })
+        $('#clear_text').attr('disabled', 'disabled')
         return false
       }
 

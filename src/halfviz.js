@@ -218,6 +218,7 @@
       },
 
       completeNodeNames:function(e){
+          console.log(e.urls, e.nameNode)
         var urls = String(e.urls).split('\n')
 
         $.each(urls, function(i, url){

@@ -22,6 +22,7 @@
           <label for="node_names">Namen</label>
           <textarea id="node_names" rows=2 title="Ein Name pro Zeile"></textarea>
 
+          <button id="clear_text" class="btn success" disabled>Neu</button>
           <button id="update_node" class="btn primary add" disabled>Speichern</button>
           <button id="remove_node" class="btn danger remove" disabled>
             <span class="selected_name">Person</span> entfernen
@@ -32,14 +33,16 @@
           <h3><span id="relationship-list-name" class="selected_name">Person</span> küsste:</h3>
           <ul id="relationship-list">
           </ul>
+
+          <button id="clear_text" class="btn success">Neuen Kuss eintragen</button>
+
           <label for="node_1">Name / URL</label>
           <input id="node_1" type="text">
 
           <label for="node_2">Name / URL</label>
           <input id="node_2" type="text">
 
-          <button id="add_edge" class="btn primary add">Beziehung hinzufügen</button>
-          <button id="remove_edge" class="btn danger remove">Beziehung entfernen</button>
+          <button id="add_edge" class="btn primary add">Knutscherei speichern</button>
         </div>
         <div>
           <h2>Empfehlungen</h2>
