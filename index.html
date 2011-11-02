@@ -14,7 +14,7 @@
     <div id="editor" class="well">
       <div class="io">
         <div class="ctrl">
-          <h1>Person bearbeiten</h1>
+          <h1><span class="selected_name">Wer küsst wen?</span></h1>
 
           <label for="node_urls">URLs</label>
           <textarea id="node_urls" rows=2 title="Ein URL pro Zeile"></textarea>
@@ -22,8 +22,10 @@
           <label for="node_names">Namen</label>
           <textarea id="node_names" rows=2 title="Ein Name pro Zeile"></textarea>
 
-          <button id="add_node" class="btn primary add">Person hinzufügen</button>
-          <button id="remove_node" class="btn danger remove">Person entfernen</button>
+          <button id="update_node" class="btn primary add" disabled>Speichern</button>
+          <button id="remove_node" class="btn danger remove" disabled>
+            <span class="selected_name">Person</span> entfernen
+          </button>
         </div>
         <div>
           <label for="node_1">Name / URL</label>
@@ -32,10 +34,10 @@
           <label for="node_2">Name / URL</label>
           <input id="node_2" type="text">
 
-          <button id="add_edge" class="btn add">Beziehung hinzufügen</button>
-          <button id="remove_edge" class="btn remove">Beziehung entfernen</button>
+          <button id="add_edge" class="btn primary add">Beziehung hinzufügen</button>
+          <button id="remove_edge" class="btn danger remove">Beziehung entfernen</button>
         </div>
-        <h1>Personen, die <span id="analysis-name">X</span> küssten, knutschten auch hemmungslos mit:</h1>
+        <h2>Kunden, die <span class="selected_name">Person</span> küssten, kauften auch:</h2>
         <ul id="analysis-list">
         </ul>
         <script>
@@ -48,7 +50,7 @@
             sys.save()
           }
         </script>
-        <button onclick="javascript:reset()" class="btn">
+        <button onclick="javascript:reset()" class="btn remove">
           Bei Fersagen Knopf drücken, Mutterbegatter!
         </button>
       </div>

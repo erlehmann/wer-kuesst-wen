@@ -14,7 +14,10 @@
         $('#node_urls').change(that.completeNodeNames)
         $('#node_names').change(that.completeNodeNames)
 
-        $('#add_node').bind('click', that.addNodeClick)
+        $('#node_urls').keyup(that.enableSaving)
+        $('#node_names').keyup(that.enableSaving)
+
+        $('#update_node').bind('click', that.addNodeClick)
         $('#add_edge').bind('click', that.addEdgeClick)
 
         $('#remove_node').bind('click', that.removeNodeClick)
@@ -31,6 +34,10 @@
           nameNode: $('#node_names'),
           urls: $('#node_urls').val()
         })
+      },
+
+      enableSaving:function(e){
+        $('#update_node').removeAttr('disabled')
       },
 
       addNodeClick:function(e){

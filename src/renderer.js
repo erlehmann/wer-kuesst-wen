@@ -196,8 +196,10 @@
             var node = nearest.node
             $('#node_names').val(node.data.names.join('\n'))
             $('#node_urls').val(node.data.urls.join('\n'))
-            $('#analysis-name').text(node.data.names[0])
+            $('.selected_name').text(node.data.names[0])
             $('#analysis-list').empty()
+            $('#update_node').attr('disabled', 'disabled')
+            $('#remove_node').removeAttr('disabled')
 
             var adjacentNodes = sys.getAdjacentNodes(node)
             var favoriteNodes = sys.getAdjacentNodeFavorites(node)
