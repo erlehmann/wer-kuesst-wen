@@ -54,6 +54,13 @@
       node.data.urls = urls
     }
 
+    sys.updateNodeMass = function(node, multiplier){
+      var adjacencies = sys.getAdjacentNodes(node).length
+      var mass = adjacencies * multiplier
+      node.mass = mass
+      console.log(mass, node.mass, node)
+    }
+
     sys.getAdjacentNodes = function(node){
         var nodedict = {}
 
