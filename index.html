@@ -13,9 +13,8 @@
     <canvas id="viewport" width="800" height="600"></canvas>
     <div id="editor" class="well">
       <div class="io">
+        <h2>Person</h2>
         <div class="ctrl">
-          <h2>Person</h2>
-
           <label for="node_urls">URLs</label>
           <textarea id="node_urls" rows=2 title="Ein URL pro Zeile"></textarea>
 
@@ -28,8 +27,8 @@
             <span class="selected_name">Person</span> entfernen
           </button>
         </div>
+        <h2>Erfahrungen</h2>
         <div>
-          <h2>Erfahrungen</h2>
           <h3><span id="relationship-list-name" class="selected_name">Person</span> küsste:</h3>
           <ul id="relationship-list">
           </ul>
@@ -43,8 +42,8 @@
             <button id="add_edge" class="btn primary add">Knutscherei mit <span id="relationship-list-name" class="selected_name">Person</span> speichern</button>
           </div>
         </div>
+        <h2>Empfehlungen</h2>
         <div>
-          <h2>Empfehlungen</h2>
           <p>
             Kunden, die <span class="selected_name">Person</span> küssten, kauften auch:
           </p>
@@ -58,8 +57,8 @@
             </tbody>
           </table>
         </div>
+        <h2>Rohdaten</h2>
         <div>
-          <h2>Rohdaten</h2>
           <p>
             Die Beschreibung des Graphen ist als <abbr title="Javascript Object Notation">JSON</abbr> verfügbar.
           </p>
@@ -84,6 +83,7 @@
   </div>  
 
   <script src="lib/jquery.1.4.4.min.js"></script>
+  <script src="lib/jquery-ui-1.8.16.custom.min.js"></script>
   <script src="lib/arbor.js"></script>
   <script src="lib/graphics.js"></script>
   <script src="lib/parseuri.js"></script>
@@ -108,6 +108,8 @@
     $('#node_names').twipsy(options)
 
     $('#edge_form').toggle()
+
+    $('.io').accordion()
   </script>
 </body>
 </html>

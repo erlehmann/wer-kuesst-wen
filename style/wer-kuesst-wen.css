@@ -90,8 +90,13 @@ table{
   width:346px;
 }
 
-#editor>.io>*{
-  padding:20px;
+#editor>.io>h2{
+  padding:10px;
+  margin:10px;
+}
+
+#editor>.io>div{
+  padding:0 20px 20px;
 }
 
 #grabber{
