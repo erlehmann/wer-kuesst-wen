@@ -14,7 +14,7 @@
     <div id="editor" class="well">
       <div class="io">
         <div class="ctrl">
-          <h1><span class="selected_name">Wer küsst wen?</span></h1>
+          <h2>Person</h2>
 
           <label for="node_urls">URLs</label>
           <textarea id="node_urls" rows=2 title="Ein URL pro Zeile"></textarea>
@@ -28,6 +28,10 @@
           </button>
         </div>
         <div>
+          <h2>Erfahrungen</h2>
+          <h3><span class="selected_name">Person</span> küsste:</h3>
+          <ul id="relationship-list">
+          </ul>
           <label for="node_1">Name / URL</label>
           <input id="node_1" type="text">
 
@@ -37,9 +41,21 @@
           <button id="add_edge" class="btn primary add">Beziehung hinzufügen</button>
           <button id="remove_edge" class="btn danger remove">Beziehung entfernen</button>
         </div>
-        <h2>Kunden, die <span class="selected_name">Person</span> küssten, kauften auch:</h2>
-        <ul id="analysis-list">
-        </ul>
+        <div>
+          <h2>Empfehlungen</h2>
+          <p>
+            Kunden, die <span class="selected_name">Person</span> küssten, knutschten auch:
+          </p>
+          <table class="zebra-striped">
+            <thead>
+              <th>Name</th>
+              <th>absolut</th>
+              <th>prozentual</th>
+            </thead>
+            <tbody id="analysis-table">
+            </tbody>
+          </table>
+        </div>
         <script>
           function reset(){
             sys.eachNode(function(node, pt){

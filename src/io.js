@@ -21,7 +21,7 @@
         $('#add_edge').bind('click', that.addEdgeClick)
 
         $('#remove_node').bind('click', that.removeNodeClick)
-        $('#remove_edge').bind('click', that.removeEdgeClick)
+        $('.remove_edge').live('click', that.removeEdgeClick)
 
         $('#clear_text').bind('click', that.clearTextClick)
 

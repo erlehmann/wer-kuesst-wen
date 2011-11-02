@@ -4,11 +4,13 @@ body{
   overflow:hidden;
   width:100%;
 }
+
 h1,
 label,
 input,
 textarea{
   box-sizing:border-box;
+  clear:both;
   display:block;
   margin-bottom:0.75em;
   text-align:left;
@@ -27,12 +29,44 @@ button+button{
   margin-right:10px;
 }
 
+
+ul{
+  margin:0;
+}
+
+li{
+  display:inline-block;
+  height:48px;
+  margin:0 12px 12px 0;
+  min-width:124px;
+  position:relative;
+}
+
+li>img{
+  margin:0 10px 10px 0;
+}
+
+li>b{
+  display:block;
+  left:60px;
+  position:absolute;
+  top:0;
+}
+
+li>button{
+  float:none;
+  clear:both;
+  position:relative;
+  top:-1.5em;
+}
+
 #viewport,
 #editor,
 #grabber{
   box-sizing:border-box;
   bottom:0;
   height:100%;
+  padding:0;
   position:absolute;
   top:0;
 }
@@ -40,7 +74,12 @@ button+button{
 #editor{
   right:0;
   min-width:172px;
+  overflow-y:scroll;
   width:346px;
+}
+
+#editor>.io>*{
+  padding:20px;
 }
 
 #grabber{
@@ -52,4 +91,8 @@ button+button{
 
 #grabber:hover{
   cursor:col-resize
+}
+
+.selected_name{
+  font-weight:bold;
 }

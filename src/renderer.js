@@ -197,19 +197,29 @@
             $('#node_names').val(node.data.names.join('\n'))
             $('#node_urls').val(node.data.urls.join('\n'))
             $('.selected_name').text(node.data.names[0])
-            $('#analysis-list').empty()
+            
             $('#update_node').attr('disabled', 'disabled')
             $('#remove_node').removeAttr('disabled')
 
             var adjacentNodes = sys.getAdjacentNodes(node)
+            $('#relationship-list').empty()
+
+            $.each(adjacentNodes, function(index){
+              var adjacentNode = adjacentNodes[index]
+              var name = adjacentNode.data.names[0]
+
+              $('#relationship-list').append('<li><img src="' + adjacentNode.data.img.src +'" alt="' + name + '">' + '<b>' + name + '</b>' + '<button class="btn remove_edge">Entfernen</button>')
+            })
+
             var favoriteNodes = sys.getAdjacentNodeFavorites(node)
+            $('#analysis-table').empty()
 
             $.each(favoriteNodes, function(name, count){
               var favoriteNode = sys.getNode(name)
               var percentage = (count/adjacentNodes.length)*100
 
-              $('#analysis-list').append(
-                '<li>' + favoriteNode.data.names[0] + ' (' + Math.round(percentage) + '%)'
+              $('#analysis-table').append(
+                '<tr><td>' + favoriteNode.data.names[0] + '</td><td>' + count + '</td><td>' + Math.round(percentage) + '%</td></tr>'
               )
             })
 
