@@ -68,6 +68,10 @@ li>button{
   top:-1.5em;
 }
 
+table{
+  margin-bottom:0;
+}
+
 #viewport,
 #editor,
 #grabber{

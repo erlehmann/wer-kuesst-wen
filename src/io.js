@@ -26,6 +26,8 @@
         $('#clear_text').bind('click', that.clearTextClick)
         $('#show_edge_form').bind('click', that.toggleEdgeForm)
 
+        $('#data_export').bind('click', that.exportJSON)
+
         return that
       },
 
@@ -74,6 +76,7 @@
         $('#update_node').attr('disabled', 'disabled')
         $('#remove_node').attr('disabled', 'disabled')
         $('#clear_text').attr('disabled', 'disabled')
+        $('#show_edge_form').attr('disabled', 'disabled')
         return false
       },
 
@@ -102,6 +105,14 @@
       toggleEdgeForm:function(e){
         $('#edge_form').toggle()
         $('#show_edge_form').toggle()
+      },
+
+      exportJSON:function(e){
+        json = sys.exportJSON()
+        console.log(json)
+        uri = "data:application/json," + encodeURIComponent(json)
+        console.log(uri)
+        newWindow=window.open(uri, 'Download');
       }
 
     }
