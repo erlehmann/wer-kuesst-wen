@@ -5,15 +5,16 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Wer küsst wen?</title>
-	<link rel="stylesheet" href="style/halfviz.css" type="text/css" charset="utf-8">
+  <link rel="stylesheet" href="style/bootstrap.min.css">
+  <link rel="stylesheet" href="style/wer-kuesst-wen.css" type="text/css" charset="utf-8">
 </head>
 <body>
   <div id="halfviz">
     <canvas id="viewport" width="800" height="600"></canvas>
-    <div id="editor">
+    <div id="editor" class="well">
       <div class="io">
         <div class="ctrl">
-          <h1>Personen</h1>
+          <h1>Person bearbeiten</h1>
 
           <label for="node_urls">URLs (ein URL pro Zeile)</label>
           <textarea id="node_urls" rows=2></textarea>
@@ -21,25 +22,18 @@
           <label for="node_names">Namen (ein Name pro Zeile)</label>
           <textarea id="node_names" rows=2></textarea>
 
-          <button id="add_node" class="add">Hinzufügen</button>
-          <button id="clear_text" class="clear">Textfelder leeren</button>
-          <button id="remove_node" class="remove">Entfernen</button>
+          <button id="add_node" class="btn primary add">Person hinzufügen</button>
+          <button id="remove_node" class="btn danger remove">Person entfernen</button>
         </div>
         <div>
-          <h1>Beziehungen</h1>
+          <label for="node_1">Name / URL</label>
+          <input id="node_1" type="text">
 
-          <div class="line">
-            <label for="node_1">Name / URL</label>
-            <input id="node_1" type="text">
-          </div>
+          <label for="node_2">Name / URL</label>
+          <input id="node_2" type="text">
 
-          <div class="line">
-            <label for="node_2">Name / URL</label>
-            <input id="node_2" type="text">
-          </div>
-
-          <button id="add_edge" class="add">Hinzufügen</button>
-          <button id="remove_edge" class="remove">Entfernen</button>
+          <button id="add_edge" class="btn add">Beziehung hinzufügen</button>
+          <button id="remove_edge" class="btn remove">Beziehung entfernen</button>
         </div>
         <h1>Personen, die <span id="analysis-name">X</span> küssten, knutschten auch hemmungslos mit:</h1>
         <ul id="analysis-list">
@@ -52,24 +46,15 @@
             json = '{"nodes": {"DD04D708-4E47-4F8A-8217-55FF894D9E0E": {"names": ["Dora"],"urls": ["http://twitter.com/dorabianchi"]},"705891E7-52CC-421F-9E86-DA6E71918383": {"names": ["Marten"],"urls": ["http://twitter.com/martenreed"]},"28B35AA4-ED1C-48E6-9CDC-89F1B02AEDC7": {"names": ["Faye"],"urls": ["http://twitter.com/fayewhitaker"]},"561BA651-1ABC-4C08-ADBE-DF4F03F970D1": {"names": ["Marigold"],"urls": ["http://twitter.com/marigoldfarmer"]},"79147D57-AF63-4BA8-9326-EAB04F290FAD": {"names": ["Sven"],"urls": ["http://twitter.com/svenbianchi"]}},"edges": {"705891E7-52CC-421F-9E86-DA6E71918383": {"DD04D708-4E47-4F8A-8217-55FF894D9E0E": {}},"DD04D708-4E47-4F8A-8217-55FF894D9E0E": {"705891E7-52CC-421F-9E86-DA6E71918383": {}},"79147D57-AF63-4BA8-9326-EAB04F290FAD": {"28B35AA4-ED1C-48E6-9CDC-89F1B02AEDC7": {}},"28B35AA4-ED1C-48E6-9CDC-89F1B02AEDC7": {"79147D57-AF63-4BA8-9326-EAB04F290FAD": {}}}}'
             sys.merge(JSON.parse(json))
             sys.save()
-            location.reload()
           }
         </script>
-        <button onclick="javascript:reset()" style="display:block; width:100%; font-weight:bold; color:red;">
+        <button onclick="javascript:reset()" class="btn">
           Bei Fersagen Knopf drücken, Mutterbegatter!
         </button>
       </div>
     </div>
     <div id="grabber"></div>
   </div>  
-
-  <div id="dashboard">
-    <h1 class="about active">
-      Wer küsst wen?
-    </h1>
-    <a href="http://tvtropes.org/pmwiki/pmwiki.php/Main/LoveChart" class="help">Was zum Fick ist diese Scheiße?</a>
-  </div>
-
 
   <script src="lib/jquery.1.4.4.min.js"></script>
   <script src="lib/jquery.address-1.3.1.min.js"></script>
@@ -86,6 +71,5 @@
   <!-- the main driver code: start here -->
   <script src="src/halfviz.js"></script> 
 
-  
 </body>
 </html>
