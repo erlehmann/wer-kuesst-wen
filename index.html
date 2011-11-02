@@ -16,11 +16,11 @@
         <div class="ctrl">
           <h1>Person bearbeiten</h1>
 
-          <label for="node_urls">URLs (ein URL pro Zeile)</label>
-          <textarea id="node_urls" rows=2></textarea>
+          <label for="node_urls">URLs</label>
+          <textarea id="node_urls" rows=2 title="Ein URL pro Zeile"></textarea>
 
-          <label for="node_names">Namen (ein Name pro Zeile)</label>
-          <textarea id="node_names" rows=2></textarea>
+          <label for="node_names">Namen</label>
+          <textarea id="node_names" rows=2 title="Ein Name pro Zeile"></textarea>
 
           <button id="add_node" class="btn primary add">Person hinzufügen</button>
           <button id="remove_node" class="btn danger remove">Person entfernen</button>
@@ -70,6 +70,17 @@
   
   <!-- the main driver code: start here -->
   <script src="src/halfviz.js"></script> 
+
+  <!-- bootstrap stuff -->
+  <script src="lib/bootstrap-twipsy.js"></script>
+  <script>
+    options = {
+      offset:2,
+      trigger:'focus'
+    }
+    $('#node_urls').twipsy(options)
+    $('#node_names').twipsy(options)
+  </script>
 
 </body>
 </html>
