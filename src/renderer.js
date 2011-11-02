@@ -212,6 +212,10 @@
               $('#relationship-list').append('<li><img src="' + adjacentNode.data.img.src +'" alt="' + name + '">' + '<b>' + name + '</b>' + '<button class="btn remove_edge" data-name="' + name + '">Entfernen</button>')
             })
 
+            if(adjacentNodes.length == 0){
+              $('#relationship-list').append('<li><img src="img/foreveralone.png" alt="Für immer allein."><b>Niemand</b>')
+            }
+
             var favoriteNodes = sys.getAdjacentNodeFavorites(node)
             $('#analysis-table').empty()
 
