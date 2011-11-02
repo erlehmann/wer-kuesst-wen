@@ -208,7 +208,7 @@
               var adjacentNode = adjacentNodes[index]
               var name = adjacentNode.data.names[0]
 
-              $('#relationship-list').append('<li><img src="' + adjacentNode.data.img.src +'" alt="' + name + '">' + '<b>' + name + '</b>' + '<button class="btn remove_edge">Entfernen</button>')
+              $('#relationship-list').append('<li><img src="' + adjacentNode.data.img.src +'" alt="' + name + '">' + '<b>' + name + '</b>' + '<button class="btn remove_edge" data-name="' + name + '">Entfernen</button>')
             })
 
             var favoriteNodes = sys.getAdjacentNodeFavorites(node)
