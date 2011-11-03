@@ -183,6 +183,20 @@
       }
     }
 
+    $( "#edge_node" ).autocomplete({
+      source:function(request, response){
+        var a=Array();
+        sys.eachNode(function(node, px){
+          $.each(node.data.names, function(i, name){
+            if (name.toLowerCase().search(request.term) != -1){
+              a.push(name)
+            }
+          })
+        })
+        response(a)
+      }
+    })
+
     var _ed = dom.find('#editor')
     var _canvas = dom.find('#viewport').get(0)
     var _grabber = dom.find('#grabber')
