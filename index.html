@@ -64,17 +64,48 @@
           </p>
           <button id="data_export" class="btn primary">Daten exportieren</button>
         </div>
-        <script>
-          function reset(){
-            sys.eachNode(function(node, pt){
-              sys.pruneNode(node)
-            })
-
-            console.log(json)
-            sys.merge(JSON.parse(json))
-            sys.save()
-          }
-        </script>
+        <h2>Über diese Software</h2>
+        <div>
+          <p>
+            <i>Wer küsst wen?</i> ist freie Software und lizenziert unter der <a href="http://www.gnu.org/licenses/agpl.html"></a><abbr title="GNU is Not Unix">GNU</abbr> <abbr title="Affero General Public License">AGPL</abbr></a>, Version 3 oder, nach Lust und Laune, jeder späteren Version. <a href="https://github.com/erlehmann/wer-kuesst-wen">Hier ist der Quellcode.</a>
+          </p>
+          <p><i>Wer küsst wen?</i> basiert auf <a href="http://arborjs.org/halfviz/#/the-mystery-of-chimney-rock"><i>halfviz</i></a> und nutzt folgende Bibliotheken:
+          </p>
+          <table class="zebra-striped">
+            <thead>
+              <th>Programm</th>
+              <th>Autor</th>
+              <th>Lizenz</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="http://arborjs.org/"><i>arbor.js</i></a></td>
+                <td><a href="https://github.com/samizdatco">Christian Swinehart</a></td>
+                <td><a href="http://de.wikipedia.org/wiki/MIT-Lizenz">MIT-Lizenz</a></td>
+              </tr>
+              <tr>
+                <td><a href="http://twitter.github.com/bootstrap/"><i>bootstrap</i></a></td>
+                <td><a href="http://twitter.com/mdo">Mark Otto</a>, <a href="http://twitter.com/fat">Jacob Thornton</a></td>
+                <td><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License v2.0</a></td>
+              </tr>
+              <tr>
+                <td><a href="http://jquery.com/"><i>jQuery</i></a></td>
+                <td><a href="http://jquery.org/team/"><i>jQuery Project</i></a></td>
+                <td><a href="https://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt">MIT-Lizenz</a> oder <a href="https://github.com/jquery/jquery/blob/master/GPL-LICENSE.txt"><abbr title="General Public License, Version 2">GPL v2</abbr></a></td>
+              </tr>
+              <tr>
+                <td><a href="http://www.broofa.com/2008/09/javascript-uuid-function/"><i>Math.uuid.js</i></a></td>
+                <td><a href="robert@broofa.com">Robert Kiefer</a></td>
+                <td>MIT-Lizenz oder <abbr title="General Public License">GPL</abbr></td>
+              </tr>
+              <tr>
+                <td><a href="http://blog.stevenlevithan.com/archives/parseuri">parseUri</a></td>
+                <td><a href="http://stevenlevithan.com">Steven Levithan</a></td>
+                <td>MIT-Lizenz</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
     <div id="grabber"></div>
