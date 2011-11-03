@@ -197,7 +197,7 @@
             $('#node_names').val(node.data.names.join('\n'))
             $('#node_urls').val(node.data.urls.join('\n'))
             $('.selected_name').text(node.data.names[0])
-            
+
             $('#update_node').attr('disabled', 'disabled')
             $('#remove_node').removeAttr('disabled')
             $('#clear_text').removeAttr('disabled')
@@ -228,6 +228,8 @@
                 '<tr><td>' + favoriteNode.data.names[0] + '</td><td>' + count + '</td><td>' + Math.round(percentage) + '%</td></tr>'
               )
             })
+
+            $("#analysis-table").parent().tablesorter();
 
             return false
           },
