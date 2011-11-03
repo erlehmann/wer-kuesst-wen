@@ -91,12 +91,18 @@ table{
 }
 
 #editor>.io>h2{
+  margin:9px 20px;
   padding:10px;
-  margin:10px;
+  border-top:2px solid;
+  outline:none !important;
+}
+
+#editor>.io>h2:nth-of-type(1){
+  border-top:2px solid transparent;
 }
 
 #editor>.io>div{
-  padding:0 20px 20px;
+  padding:0 30px 40px;
 }
 
 #grabber{
