@@ -229,7 +229,7 @@
               )
             })
 
-            $("#analysis-table").parent().tablesorter();
+          $("#analysis-table").parent().trigger("update")
 
             return false
           },

@@ -142,15 +142,44 @@
 
     sys.save = function(){
       localStorage.json = sys.exportJSON()
-    }
+    },
+
+    // from <http://www.idealog.us/2006/06/javascript_to_p.html>
+    sys.query = function(variable){
+      var query = window.location.search.substring(1)
+      var vars = query.split("&")
+      for (var i=0;i<vars.length;i++){
+        var pair = vars[i].split("=")
+        if (pair[0] == variable) {
+          return pair[1]
+        }
+      }
+      return '';
+    },
 
     sys.load = function(){
-      json = localStorage.json
-      if (typeof json === 'string'){
-        sys.importJSON(json)
+      var query = sys.query('json')
+      if (query != ''){
+        $.ajax({
+          url: query,
+          success: function(json){
+            sys.importJSON(json)
+            sys.save()
+          }
+        })
       }else{
-        json = '{"nodes": {"DD04D708-4E47-4F8A-8217-55FF894D9E0E": {"names": ["Dora"],"urls": ["http://twitter.com/dorabianchi"]},"705891E7-52CC-421F-9E86-DA6E71918383": {"names": ["Marten"],"urls": ["http://twitter.com/martenreed"]},"28B35AA4-ED1C-48E6-9CDC-89F1B02AEDC7": {"names": ["Faye"],"urls": ["http://twitter.com/fayewhitaker"]},"561BA651-1ABC-4C08-ADBE-DF4F03F970D1": {"names": ["Marigold"],"urls": ["http://twitter.com/marigoldfarmer"]},"79147D57-AF63-4BA8-9326-EAB04F290FAD": {"names": ["Sven"],"urls": ["http://twitter.com/svenbianchi"]}},"edges": {"705891E7-52CC-421F-9E86-DA6E71918383": {"DD04D708-4E47-4F8A-8217-55FF894D9E0E": {}},"DD04D708-4E47-4F8A-8217-55FF894D9E0E": {"705891E7-52CC-421F-9E86-DA6E71918383": {}},"79147D57-AF63-4BA8-9326-EAB04F290FAD": {"28B35AA4-ED1C-48E6-9CDC-89F1B02AEDC7": {}},"28B35AA4-ED1C-48E6-9CDC-89F1B02AEDC7": {"79147D57-AF63-4BA8-9326-EAB04F290FAD": {}}}}'
-        sys.importJSON(json)
+        json = localStorage.json
+        if (typeof json === 'string'){
+          sys.importJSON(json)
+        }else{
+          $.ajax({
+            url: './qc.json',
+            success: function(json){
+              sys.importJSON(json)
+              sys.save()
+            }
+          })
+        }
       }
     }
 

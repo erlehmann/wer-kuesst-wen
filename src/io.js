@@ -27,6 +27,7 @@
         $('#show_edge_form').bind('click', that.toggleEdgeForm)
 
         $('#data_export').bind('click', that.exportJSON)
+        $("#analysis-table").parent().tablesorter()
 
         return that
       },
@@ -110,7 +111,7 @@
       exportJSON:function(e){
         json = sys.exportJSON()
         console.log(json)
-        uri = "data:application/json," + encodeURIComponent(json)
+        uri = "data:application/octet-stream," + encodeURIComponent(json)
         console.log(uri)
         newWindow=window.open(uri, 'Download');
       }
