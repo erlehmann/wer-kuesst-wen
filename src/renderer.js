@@ -40,6 +40,7 @@
           $.each(node.data.urls, function(index, url) {
             // try to set profile picture if not there
             if (typeof node.data.img === typeof undefined){
+              var img_url
               var icon_url
 
               // FIXME: inefficient placement of this code
@@ -52,18 +53,18 @@
 
               if (parseResult.host.endsWith('facebook.com')){
                 var fb_id = parseResult.file
-                var img_url = 'https://graph.facebook.com/' + fb_id + '/picture'
+                img_url = 'https://graph.facebook.com/' + fb_id + '/picture'
                 icon_url = 'img/facebook.png'
               }
 
               if (parseResult.host.endsWith('twitter.com')){
                 var tw_id = parseResult.file
-                var img_url = 'http://api.twitter.com/1/users/profile_image/' + tw_id
+                img_url = 'http://api.twitter.com/1/users/profile_image/' + tw_id
                 icon_url = 'img/twitter.png'
               }
 
-              var img = new Image()
               if (typeof img_url === 'string'){
+                var img = new Image()
                 img.src = img_url
                 node.data.img = img
               }
@@ -73,17 +74,40 @@
                 icon.src = icon_url
                 node.data.icon = icon
               }
+
+              // horrible hack to prevent over 9000 requests
+              if ((typeof node.data.img_loading === typeof undefined) &&
+                  (typeof node.data.img === typeof undefined)) {
+                node.data.img_loading = true
+                // i am repeating myself here (similar code also appears in halfviz.js)
+                var g_url = 'https://socialgraph.googleapis.com/lookup?&q=' + url
+                $.getJSON(g_url + '&callback=?', function(json){
+                  try {
+                    var canonical_url = json.canonical_mapping[url]
+                    var img_url = json.nodes[canonical_url].attributes.photo
+
+                    if (typeof img_url === 'string'){
+                      var img = new Image()
+                      img.src = img_url
+                      node.data.img = img
+                    }
+                  } catch(e){
+                    // pass if property is not there
+                  }
+                })
+              }
+
             }
           })
 
           var img = node.data.img
           if (typeof img !== typeof undefined){
-            ctx.drawImage(img, pt.x-(img.width/2), pt.y-(img.height+12))
+            ctx.drawImage(img, pt.x-24, pt.y-60, 48, 48)
           }
 
           var icon = node.data.icon
           if (typeof icon !== typeof undefined){
-            ctx.drawImage(icon, pt.x-(img.width/2), pt.y-(icon.height+12))
+            ctx.drawImage(icon, pt.x-24, pt.y-(icon.height+12))
           }
 
           // draw a rectangle centered at pt
@@ -210,7 +234,7 @@
               var adjacentNode = adjacentNodes[index]
               var name = adjacentNode.data.names[0]
 
-              $('#relationship-list').append('<li><img src="' + adjacentNode.data.img.src +'" alt="' + name + '">' + '<b>' + name + '</b>' + '<button class="btn remove_edge" data-name="' + name + '">Entfernen</button>')
+              $('#relationship-list').append('<li><img height=48 width=48 src="' + adjacentNode.data.img.src +'" alt="' + name + '">' + '<b>' + name + '</b>' + '<button class="btn remove_edge" data-name="' + name + '">Entfernen</button>')
             })
 
             if(adjacentNodes.length == 0){
