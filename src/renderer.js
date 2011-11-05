@@ -107,7 +107,7 @@
 
           var icon = node.data.icon
           if (typeof icon !== typeof undefined){
-            ctx.drawImage(icon, pt.x-24, pt.y-(icon.height+12))
+            ctx.drawImage(icon, pt.x-24, pt.y-(icon.height+12), 16, 16)
           }
 
           // draw a rectangle centered at pt
