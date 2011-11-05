@@ -284,7 +284,8 @@
               var g_url = 'https://socialgraph.googleapis.com/lookup?&q=' + url
               $.getJSON(g_url + '&callback=?', function(json){
                 try {
-                  var name = json.nodes[url].attributes.fn
+                  var canonical_url = json.canonical_mapping[url]
+                  var name = json.nodes[canonical_url].attributes.fn
                   e.nameNode.val(name)
                 } catch(e){
                   // pass if property is not there
